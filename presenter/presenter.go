@@ -45,4 +45,11 @@ type Window struct {
 	Filter               string
 	ShowFilter           bool
 	IgnoreManualPassings bool
+	Styles               []Style
+}
+
+// Style represents a custom style attribute/value pair
+type Style struct {
+	Attribute string
+	Value     string
 }

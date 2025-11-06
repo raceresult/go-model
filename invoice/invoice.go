@@ -108,8 +108,9 @@ type Settings struct {
 }
 
 type Filter struct {
-	ID     []int
-	Number []string
-	PID    []int
-	Sent   []bool
+	ID                    []int
+	Number                []string
+	PID                   []int
+	Sent                  []bool
+	PaymentTermsReference []string
 }

@@ -42,7 +42,7 @@ type Step struct {
 	EnabledTo   datetime.DateTime
 	Elements    []Element
 	ButtonText  string
-	Filter      string
+	ShowIf      string
 }
 
 type Element struct {

@@ -155,6 +155,7 @@ type Participant struct {
 	ForeignID         int
 	RecordPayGUID     string
 	ActivationEventID string
+	OPJSON            string
 	OPID              int
 	OPMethod          int
 	OPStatus          int

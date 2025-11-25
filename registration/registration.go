@@ -23,6 +23,7 @@ type Registration struct {
 	AdditionalValues                           []AdditionalValue
 	CheckSex                                   bool
 	CheckDuplicate                             bool
+	DontProposeGender                          bool
 	OnlinePayment                              bool
 	OnlinePaymentButtonText                    string
 	PaymentMethods                             []PaymentMethod

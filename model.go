@@ -753,3 +753,23 @@ type RegistrationRequestResponseRecord struct {
 	EntryFees    []EntryFeeItem
 	HasDuplicate bool
 }
+
+type OPData struct {
+	PID         int
+	EntryFees   decimal.Decimal
+	Processed   decimal.Decimal
+	Received    decimal.Decimal
+	Balance     decimal.Decimal
+	BalanceDate time.Time
+	Payments    []OPDataPayment
+}
+type OPDataPayment struct {
+	ID        int
+	Created   time.Time
+	Method    int
+	Reference string
+	Amount    decimal.Decimal
+	Currency  string
+	Received  decimal.Decimal
+	Comment   string `json:",omitempty"`
+}

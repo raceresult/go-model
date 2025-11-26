@@ -755,12 +755,11 @@ type RegistrationRequestResponseRecord struct {
 }
 
 type OPData struct {
-	EntryFees   decimal.Decimal
-	Processed   decimal.Decimal
-	Received    decimal.Decimal
-	Balance     decimal.Decimal
-	BalanceDate time.Time
-	Payments    []OPDataPayment
+	EntryFees decimal.Decimal
+	Processed decimal.Decimal
+	Received  decimal.Decimal
+	Date      time.Time
+	Payments  []OPDataPayment
 }
 type OPDataPayment struct {
 	ID        int

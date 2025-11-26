@@ -755,7 +755,6 @@ type RegistrationRequestResponseRecord struct {
 }
 
 type OPData struct {
-	PID         int
 	EntryFees   decimal.Decimal
 	Processed   decimal.Decimal
 	Received    decimal.Decimal

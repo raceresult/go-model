@@ -206,5 +206,6 @@ type FinishResult struct {
 
 type CaptureResponse struct {
 	AddFields    variant.VariantMap
+	OPJSON       map[int]string
 	PaymentTerms invoice.PaymentTerms
 }

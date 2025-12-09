@@ -657,6 +657,15 @@ type UserInfo struct {
 	UserPic  string
 }
 
+type UserRights map[string][]string
+
+type UserRole struct {
+	ID     int
+	UserID int
+	Name   string
+	Rights UserRights
+}
+
 type UserRight struct {
 	UserID   int
 	UserName string

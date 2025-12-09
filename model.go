@@ -659,20 +659,11 @@ type UserInfo struct {
 
 type UserRights map[string][]string
 
-type UserRole struct {
-	ID       int
-	UserID   int
-	Name     string
-	Rights   UserRights
-	OrderPos int
-}
-
 type UserRight struct {
 	UserID   int
 	UserName string
 	UserPic  string
 	Rights   string
-	RoleID   int
 }
 
 // SimpleAPIItem represents one entry in the SimpleAPI table

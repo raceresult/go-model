@@ -660,10 +660,11 @@ type UserInfo struct {
 type UserRights map[string][]string
 
 type UserRole struct {
-	ID     int
-	UserID int
-	Name   string
-	Rights UserRights
+	ID       int
+	UserID   int
+	Name     string
+	Rights   UserRights
+	OrderPos int
 }
 
 type UserRight struct {

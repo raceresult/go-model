@@ -602,6 +602,7 @@ type Version struct {
 	Major    int    `json:"major"`
 	Minor    int    `json:"minor"`
 	Revision int    `json:"revision"`
+	Tag      string `json:"string"`
 	Hash     string `json:"hash"`
 }
 

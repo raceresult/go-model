@@ -671,10 +671,7 @@ type UserRight struct {
 	UserName string
 	UserPic  string
 	Rights   string
-	Role     struct {
-		ID   int
-		Name string
-	}
+	RoleID   int
 }
 
 // SimpleAPIItem represents one entry in the SimpleAPI table

@@ -2,6 +2,7 @@ package sesbase
 
 import (
 	"github.com/raceresult/go-model/invoice"
+	"strings"
 	"time"
 
 	"github.com/raceresult/go-model/date"
@@ -658,6 +659,30 @@ type UserInfo struct {
 }
 
 type UserRights map[string][]string
+
+func (q UserRights) Has(right string) bool {
+	if q == nil {
+		return false
+	}
+	if _, ok := q["*"]; ok {
+		return true
+	}
+
+	arr := strings.Split(right, ".")
+	v, ok := q[arr[0]]
+	if !ok {
+		return false
+	}
+	if len(arr) == 1 {
+		return true
+	}
+	for _, r := range v {
+		if r == "*" || r == arr[1] {
+			return true
+		}
+	}
+	return false
+}
 
 type UserRight struct {
 	UserID   int

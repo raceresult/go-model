@@ -245,6 +245,26 @@ type HistoryEntry struct {
 	Application string
 }
 
+type HistoryFilter struct {
+	ID          []int
+	Field       []string
+	OldValue    []string
+	NewValue    []string
+	Application []string
+	User        []string
+
+	From datetime.DateTime
+	To   datetime.DateTime
+
+	Participant HistoryParticipantFilter
+}
+
+type HistoryParticipantFilter struct {
+	ID         []int
+	Contest    []int
+	Expression string
+}
+
 // Overwrite describes the internal go model
 type Overwrite struct {
 	ID       int

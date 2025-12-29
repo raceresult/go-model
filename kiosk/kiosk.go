@@ -57,6 +57,7 @@ type EditField struct {
 }
 
 type SearchField struct {
-	Field string
-	Hide  bool
+	Field    string
+	Hide     bool // legacy
+	Function string
 }

@@ -149,6 +149,7 @@ type Method struct {
 	TransactionCosts       decimal.Decimal
 	DisagioCosts           decimal.Decimal
 	TransferDelay          int
+	TransferDelayDecember  int
 	Activated              bool
 	NoPayout               bool
 	BankAccountID          int

@@ -815,6 +815,7 @@ type OPDataPayment struct {
 	Method    int
 	Reference string
 	Amount    decimal.Decimal
+	Fees      decimal.Decimal
 	Currency  string
 	Received  decimal.Decimal
 	Comment   string `json:",omitempty"`

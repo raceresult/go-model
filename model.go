@@ -517,6 +517,7 @@ type UserDefinedField struct {
 	Name       string
 	Expression string
 	Note       string
+	Group      string
 }
 
 type VoucherType byte

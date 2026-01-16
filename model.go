@@ -158,16 +158,6 @@ type Participant struct {
 	ActivationEventID string
 	OPJSON            string
 	OPID              int
-	OPMethod          int
-	OPStatus          int
-	OPEntryFee        decimal.Decimal
-	OPUserFee         decimal.Decimal
-	OPPaymentFee      decimal.Decimal
-	OPCurrency        string
-	OPToPay           decimal.Decimal
-	OPBalance         decimal.Decimal
-	OPBalanceDate     datetime.DateTime
-	OPReference       string
 	License           string
 	ShowUnderscores   bool
 	GroupRegPos       int

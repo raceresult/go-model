@@ -536,7 +536,8 @@ type Voucher struct {
 	Type       VoucherType
 	Amount     decimal.Decimal
 	Tax        decimal.Decimal
-	Contest    int
+	Contest    int    //Contest remains for compatibility with older versions
+	Contests   string //used since Feb 2026, to multiselect contests.
 	Category   string
 	ValidUntil datetime.DateTime
 	ValidFrom  datetime.DateTime

@@ -536,7 +536,7 @@ type Voucher struct {
 	Type       VoucherType
 	Amount     decimal.Decimal
 	Tax        decimal.Decimal
-	Contest    int
+	Contests   []int
 	Category   string
 	ValidUntil datetime.DateTime
 	ValidFrom  datetime.DateTime

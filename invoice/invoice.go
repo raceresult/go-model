@@ -84,6 +84,14 @@ type WithDetails struct {
 	Fields      variant.VariantMap
 }
 
+type WithTaxDetails struct {
+	*WithDetails
+	Taxes       map[decimal.Decimal]decimal.Decimal
+	TaxSum      decimal.Decimal
+	GrossAmount decimal.Decimal
+	NetAmount   decimal.Decimal
+}
+
 type Settings struct {
 	NumberScheme              string
 	LegalNotes                string

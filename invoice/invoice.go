@@ -1,10 +1,11 @@
 package invoice
 
 import (
+	"time"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/decimal"
 	"github.com/raceresult/go-model/variant"
-	"time"
 )
 
 type Party struct {
@@ -82,6 +83,63 @@ type WithDetails struct {
 	Items       []*Item
 	SourceItems []*SourceItem
 	Fields      variant.VariantMap
+}
+
+// GetTaxes returns a map that holds the sum of the VAT of the items per tax rate
+func (q WithDetails) GetTaxes() map[decimal.Decimal]decimal.Decimal {
+	taxes := make(map[decimal.Decimal]decimal.Decimal)
+	for _, invoiceItem := range q.Items {
+		v := invoiceItem.UnitPrice.Mult(invoiceItem.Count)
+
+		if invoiceItem.TaxRate < 0 {
+			taxes[invoiceItem.TaxRate] = v - v.DivDecimal(decimal.FromInt(1)-invoiceItem.TaxRate).Round(2)
+		} else {
+			taxes[invoiceItem.TaxRate] = invoiceItem.UnitPrice.Mult(invoiceItem.Count).Mult(invoiceItem.TaxRate).Round(2)
+		}
+	}
+	return taxes
+}
+
+// GetTaxSum returns the sum of the VAT of all items
+func (q WithDetails) GetTaxSum() decimal.Decimal {
+	var taxSum decimal.Decimal
+	for _, invoiceItem := range q.Items {
+		v := invoiceItem.UnitPrice.Mult(invoiceItem.Count)
+
+		if invoiceItem.TaxRate < 0 {
+			taxSum = v - v.DivDecimal(decimal.FromInt(1)-invoiceItem.TaxRate).Round(2)
+		} else {
+			taxSum = invoiceItem.UnitPrice.Mult(invoiceItem.Count).Mult(invoiceItem.TaxRate).Round(2)
+		}
+	}
+	return taxSum
+}
+
+// GetGrossSum returns the gross amount of the invoice
+func (q WithDetails) GetGrossSum() decimal.Decimal {
+	var grossSum decimal.Decimal
+	for _, invoiceItem := range q.Items {
+		v := invoiceItem.UnitPrice.Mult(invoiceItem.Count)
+		grossSum += v
+		if invoiceItem.TaxRate > 0 {
+			grossSum += invoiceItem.UnitPrice.Mult(invoiceItem.Count).Mult(invoiceItem.TaxRate).Round(2)
+		}
+	}
+	return grossSum
+}
+
+// GetNetSum returns the net amount of the invoice
+func (q WithDetails) GetNetSum() decimal.Decimal {
+	var netSum decimal.Decimal
+	for _, invoiceItem := range q.Items {
+		v := invoiceItem.UnitPrice.Mult(invoiceItem.Count)
+		if invoiceItem.TaxRate < 0 {
+			netSum += v.DivDecimal(decimal.FromInt(1) - invoiceItem.TaxRate).Round(2)
+		} else {
+			netSum += v
+		}
+	}
+	return netSum
 }
 
 type WithTaxDetails struct {

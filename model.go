@@ -361,6 +361,7 @@ type Result struct {
 	TimeFormat   string
 	Location     string
 	TimeRounding int
+	Group        string
 }
 
 // Split describes the internal go model

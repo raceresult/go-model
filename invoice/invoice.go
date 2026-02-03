@@ -107,9 +107,9 @@ func (q WithDetails) GetTaxSum() decimal.Decimal {
 		v := invoiceItem.UnitPrice.Mult(invoiceItem.Count)
 
 		if invoiceItem.TaxRate < 0 {
-			taxSum = v - v.DivDecimal(decimal.FromInt(1)-invoiceItem.TaxRate).Round(2)
+			taxSum += v - v.DivDecimal(decimal.FromInt(1)-invoiceItem.TaxRate).Round(2)
 		} else {
-			taxSum = invoiceItem.UnitPrice.Mult(invoiceItem.Count).Mult(invoiceItem.TaxRate).Round(2)
+			taxSum += v.Mult(invoiceItem.TaxRate).Round(2)
 		}
 	}
 	return taxSum
@@ -122,7 +122,7 @@ func (q WithDetails) GetGrossSum() decimal.Decimal {
 		v := invoiceItem.UnitPrice.Mult(invoiceItem.Count)
 		grossSum += v
 		if invoiceItem.TaxRate > 0 {
-			grossSum += invoiceItem.UnitPrice.Mult(invoiceItem.Count).Mult(invoiceItem.TaxRate).Round(2)
+			grossSum += v.Mult(invoiceItem.TaxRate).Round(2)
 		}
 	}
 	return grossSum

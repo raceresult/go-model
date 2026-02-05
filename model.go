@@ -1,13 +1,13 @@
 package sesbase
 
 import (
-	"github.com/raceresult/go-model/invoice"
 	"strings"
 	"time"
 
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/datetime"
 	"github.com/raceresult/go-model/decimal"
+	"github.com/raceresult/go-model/invoice"
 	"github.com/raceresult/go-model/variant"
 )
 
@@ -43,6 +43,7 @@ type Contest struct {
 	ID               int
 	Name             string
 	NameShort        string
+	Color            string
 	AgeStart         date.Date
 	AgeEnd           date.Date
 	Sex              string

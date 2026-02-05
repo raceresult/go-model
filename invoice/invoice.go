@@ -77,7 +77,7 @@ type Item struct {
 	TaxRate      decimal.Decimal
 }
 
-// GetTax returns the amount of tax calculated for this item, this will not necessarily fit with the tax sum of the invoice because of different rounding
+// GetTax returns the amount of tax calculated for this item
 func (i Item) GetTax() decimal.Decimal {
 	var tax decimal.Decimal
 	if i.TaxRate < 0 {

@@ -184,7 +184,6 @@ type CreateRequest struct {
 	Data               string
 	EntryFeeDetails    [][]model.EntryFeeItem
 	Method             int
-	ReferenceID        int
 	Lang               string
 	DataToken          string
 	PaymentMethodToken string

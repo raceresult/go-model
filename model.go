@@ -207,6 +207,7 @@ type Exporter struct {
 	Data               string
 	MTB                int
 	MQL                int
+	TD 				   int
 	LineEnding         string
 	StartPaused        bool
 	IgnoreBefore       decimal.Decimal

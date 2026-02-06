@@ -158,7 +158,6 @@ type Participant struct {
 	RecordPayGUID     string
 	ActivationEventID string
 	OPJSON            string
-	OPID              int
 	License           string
 	ShowUnderscores   bool
 	GroupRegPos       int

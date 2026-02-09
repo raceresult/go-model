@@ -19,7 +19,6 @@ type RegistrationFilter struct {
 
 type PaymentFilter struct {
 	ID         []int
-	IDorRetry  []int
 	RetryOf    []int
 	Event      []int
 	Month      []int

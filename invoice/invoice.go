@@ -75,131 +75,21 @@ type Item struct {
 	EntryFeeName string
 	UnitPrice    decimal.Decimal
 	TaxRate      decimal.Decimal
-}
-
-// GetTax returns the amount of tax calculated for this item
-func (i Item) GetTax() decimal.Decimal {
-	var tax decimal.Decimal
-	sum := i.UnitPrice.Mult(i.Count)
-	if i.TaxRate < 0 {
-		tax = sum - sum.DivDecimal(decimal.FromInt(1)-i.TaxRate)
-	} else {
-		tax = i.TaxRate.Mult(sum)
-	}
-	return tax
+	Tax          decimal.Decimal
 }
 
 type WithDetails struct {
 	*Invoice
-	Sum         decimal.Decimal
-	Items       []*Item
-	SourceItems []*SourceItem
-	Fields      variant.VariantMap
-}
-
-// GetTaxes returns a map that holds the sum of the VAT of the items per tax rate
-func (q WithDetails) GetTaxes() map[decimal.Decimal]decimal.Decimal {
-	gross := q.GetGrossByTaxRate()
-	net := q.GetNetByTaxRate()
-	taxes := make(map[decimal.Decimal]decimal.Decimal)
-
-	// Tax is always gross - net which are both already rounded
-	for rate, grossAmount := range gross {
-		netAmount := net[rate]
-		taxes[rate] = grossAmount - netAmount
-	}
-	return taxes
-}
-
-// GetTaxSum returns the sum of the VAT of all items
-func (q WithDetails) GetTaxSum() decimal.Decimal {
-	taxes := q.GetTaxes()
-
-	// sum up tax amounts
-	var taxSum decimal.Decimal
-	for _, v := range taxes {
-		taxSum += v
-	}
-
-	return taxSum
-}
-
-// GetGrossSum returns the gross amount of the invoice
-func (q WithDetails) GetGrossSum() decimal.Decimal {
-	gross := q.GetGrossByTaxRate()
-
-	// sum up gross amounts
-	var grossSum decimal.Decimal
-	for _, v := range gross {
-		grossSum += v
-	}
-
-	return grossSum
-}
-
-// GetGrossByTaxRate returns the gross amount of the invoice split up by tax rate
-func (q WithDetails) GetGrossByTaxRate() map[decimal.Decimal]decimal.Decimal {
-	// sum up amounts by tax rate
-	gross := make(map[decimal.Decimal]decimal.Decimal)
-	for _, invoiceItem := range q.Items {
-		gross[invoiceItem.TaxRate] += invoiceItem.UnitPrice.Mult(invoiceItem.Count)
-
-		// add additional taxes
-		if invoiceItem.TaxRate > 0 {
-			gross[invoiceItem.TaxRate] += invoiceItem.GetTax()
-		}
-	}
-
-	// Round all gross amounts after summation, but per tax rate
-	for rate, v := range gross {
-		if rate > 0 {
-			gross[rate] = v.Round(2)
-		}
-	}
-
-	return gross
-}
-
-// GetNetSum returns the net amount of the invoice
-func (q WithDetails) GetNetSum() decimal.Decimal {
-	net := q.GetNetByTaxRate()
-
-	// sum up net amounts
-	var netSum decimal.Decimal
-	for _, v := range net {
-		netSum += v
-	}
-	return netSum
-}
-
-// GetNetByTaxRate returns the net amount of the invoice split up by tax rate
-func (q WithDetails) GetNetByTaxRate() map[decimal.Decimal]decimal.Decimal {
-	// sum up amounts by tax rate
-	net := make(map[decimal.Decimal]decimal.Decimal)
-	for _, invoiceItem := range q.Items {
-		net[invoiceItem.TaxRate] += invoiceItem.UnitPrice.Mult(invoiceItem.Count)
-
-		// subtract included taxes
-		if invoiceItem.TaxRate < 0 {
-			net[invoiceItem.TaxRate] -= invoiceItem.GetTax()
-		}
-	}
-
-	// Round all net amounts after summation, but per tax rate
-	for rate, v := range net {
-		if rate < 0 {
-			net[rate] = v.Round(2)
-		}
-	}
-	return net
-}
-
-type WithTaxDetails struct {
-	*WithDetails
-	Taxes       map[decimal.Decimal]decimal.Decimal
-	TaxSum      decimal.Decimal
-	GrossAmount decimal.Decimal
-	NetAmount   decimal.Decimal
+	Sum            decimal.Decimal
+	Items          []*Item
+	SourceItems    []*SourceItem
+	Fields         variant.VariantMap
+	TaxesByTaxRate map[decimal.Decimal]decimal.Decimal
+	NetByTaxRate   map[decimal.Decimal]decimal.Decimal
+	GrossByTaxRate map[decimal.Decimal]decimal.Decimal
+	TaxSum         decimal.Decimal
+	GrossSum       decimal.Decimal
+	NetSum         decimal.Decimal
 }
 
 type Settings struct {

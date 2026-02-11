@@ -1,10 +1,11 @@
 package invoice
 
 import (
+	"time"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/decimal"
 	"github.com/raceresult/go-model/variant"
-	"time"
 )
 
 type Party struct {
@@ -74,14 +75,21 @@ type Item struct {
 	EntryFeeName string
 	UnitPrice    decimal.Decimal
 	TaxRate      decimal.Decimal
+	Tax          decimal.Decimal
 }
 
 type WithDetails struct {
 	*Invoice
-	Sum         decimal.Decimal
-	Items       []*Item
-	SourceItems []*SourceItem
-	Fields      variant.VariantMap
+	Sum            decimal.Decimal
+	Items          []*Item
+	SourceItems    []*SourceItem
+	Fields         variant.VariantMap
+	TaxesByTaxRate map[decimal.Decimal]decimal.Decimal
+	NetByTaxRate   map[decimal.Decimal]decimal.Decimal
+	GrossByTaxRate map[decimal.Decimal]decimal.Decimal
+	TaxSum         decimal.Decimal
+	GrossSum       decimal.Decimal
+	NetSum         decimal.Decimal
 }
 
 type Settings struct {

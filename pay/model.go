@@ -105,7 +105,6 @@ type Payment struct {
 	Reference     string
 	Email         string
 	BillNo        int
-	RetryOf       int
 	Lang          string
 	IgnorePayment bool
 	IgnoreReason  string

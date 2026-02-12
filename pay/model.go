@@ -157,7 +157,6 @@ type Method struct {
 	NoPayoutReceival       bool
 	NoTestMode             bool
 	Rounding               decimal.Decimal
-	DontShowFee            bool
 }
 
 type BankCheckResult struct {

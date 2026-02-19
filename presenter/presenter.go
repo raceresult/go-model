@@ -6,16 +6,17 @@ import (
 
 // Presenter represents all settings of a Presenter screen
 type Presenter struct {
-	Name         string
-	Key          string
-	Title        string
-	Enabled      bool
-	EnabledFrom  datetime.DateTime
-	EnabledTo    datetime.DateTime
-	SwitchMode   string
-	AutoHideTabs bool
-	Screens      []Screen
-	CSS          string
+	Name              string
+	Key               string
+	Title             string
+	Enabled           bool
+	EnabledFrom       datetime.DateTime
+	EnabledTo         datetime.DateTime
+	SwitchMode        string
+	AutoHideTabs      bool
+	Screens           []Screen
+	CSS               string
+	DisplayDimensions DisplayDimensions
 }
 
 // Screen represents a screen as part of a Presenter
@@ -26,6 +27,7 @@ type Screen struct {
 	BackgroundImage string
 	CSS             string
 	Windows         []Window
+	LayoutMode      string
 }
 
 // Window represents a window as part of a Presenter Screen
@@ -46,10 +48,17 @@ type Window struct {
 	ShowFilter           bool
 	IgnoreManualPassings bool
 	Styles               []Style
+	Rotation             int
 }
 
 // Style represents a custom style attribute/value pair
 type Style struct {
 	Attribute string
 	Value     string
+}
+
+// DisplayDimensions represents the dimensions of the display a presenter is shown on
+type DisplayDimensions struct {
+	Width  int
+	Height int
 }

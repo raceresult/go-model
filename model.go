@@ -207,7 +207,7 @@ type Exporter struct {
 	Data               string
 	MTB                int
 	MQL                int
-	ProcessingDelay	   int
+	ProcessingDelay    int
 	LineEnding         string
 	StartPaused        bool
 	IgnoreBefore       decimal.Decimal
@@ -424,11 +424,11 @@ const (
 // TableValue describes the internal go model
 type TableValue struct {
 	ID     int
-	Index1 int
-	Index2 int
-	Index3 int
-	Index4 int
-	Value  decimal.Decimal
+	Index1 string
+	Index2 string
+	Index3 string
+	Index4 string
+	Value  string
 }
 
 // TeamScore describes the internal go model

@@ -7,7 +7,8 @@ func (s Decimal) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON parses a Decimal from JSON
 func (s *Decimal) UnmarshalJSON(data []byte) error {
-	x, err := FromString(string(data))
+	trimmed := string(data) //strings.Trim(string(data), "\"")
+	x, err := FromString(trimmed)
 	if err != nil {
 		return err
 	}

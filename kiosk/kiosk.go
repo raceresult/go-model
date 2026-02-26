@@ -1,6 +1,10 @@
 package kiosk
 
-import "github.com/raceresult/go-model/datetime"
+import (
+	"encoding/json"
+
+	"github.com/raceresult/go-model/datetime"
+)
 
 // Kiosk represents all settings of a kiosk
 type Kiosk struct {
@@ -33,11 +37,12 @@ type Step struct {
 }
 
 type AfterSave struct {
-	Type        string
-	Value       string
-	Destination string
-	Filter      string
-	Printer     string
+	Type            string
+	Value           string
+	Destination     string
+	Filter          string
+	Printer         string
+	PrintAutorotate bool
 }
 
 type DisplayField struct {
@@ -60,4 +65,16 @@ type SearchField struct {
 	Field    string
 	Hide     bool // legacy
 	Function string
+}
+
+func (a *AfterSave) UnmarshalJSON(data []byte) error {
+	type Alias AfterSave
+	aux := &struct {
+		*Alias
+	}{
+		Alias: (*Alias)(a),
+	}
+	// default true, if value does not exist
+	a.PrintAutorotate = true
+	return json.Unmarshal(data, &aux)
 }

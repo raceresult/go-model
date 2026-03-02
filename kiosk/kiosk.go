@@ -1,8 +1,6 @@
 package kiosk
 
 import (
-	"encoding/json"
-
 	"github.com/raceresult/go-model/datetime"
 )
 
@@ -42,7 +40,7 @@ type AfterSave struct {
 	Destination     string
 	Filter          string
 	Printer         string
-	PrintAutorotate bool
+	Flags           []string
 }
 
 type DisplayField struct {
@@ -67,14 +65,3 @@ type SearchField struct {
 	Function string
 }
 
-func (a *AfterSave) UnmarshalJSON(data []byte) error {
-	type Alias AfterSave
-	aux := &struct {
-		*Alias
-	}{
-		Alias: (*Alias)(a),
-	}
-	// default true, if value does not exist
-	a.PrintAutorotate = true
-	return json.Unmarshal(data, &aux)
-}

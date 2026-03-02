@@ -1,6 +1,8 @@
 package kiosk
 
-import "github.com/raceresult/go-model/datetime"
+import (
+	"github.com/raceresult/go-model/datetime"
+)
 
 // Kiosk represents all settings of a kiosk
 type Kiosk struct {
@@ -33,11 +35,12 @@ type Step struct {
 }
 
 type AfterSave struct {
-	Type        string
-	Value       string
-	Destination string
-	Filter      string
-	Printer     string
+	Type            string
+	Value           string
+	Destination     string
+	Filter          string
+	Printer         string
+	Flags           []string
 }
 
 type DisplayField struct {
@@ -61,3 +64,4 @@ type SearchField struct {
 	Hide     bool // legacy
 	Function string
 }
+

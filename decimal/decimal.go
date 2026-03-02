@@ -153,6 +153,9 @@ func (s Decimal) RoundUp(numberOfDecimals int) Decimal {
 
 // Mult multiplies the Decimal with another Decimal
 func (s Decimal) Mult(d Decimal) Decimal {
+	if d.IsInt() { // to avoid overflow for large numbers
+		return s.MultInt(d.ToInt())
+	}
 	return s * d / Decimals
 }
 

@@ -35,6 +35,10 @@ type Registration struct {
 	ErrorMessages                              ErrorMessages
 }
 
+type Component struct {
+	Elements []Element
+}
+
 type Step struct {
 	ID          int
 	Title       string

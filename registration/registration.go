@@ -36,6 +36,7 @@ type Registration struct {
 }
 
 type Component struct {
+	Name     string
 	Elements []Element
 }
 

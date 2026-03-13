@@ -39,6 +39,24 @@ type TabConfig struct {
 	Config      json.RawMessage
 }
 
+// Text Tab
+type TabTextConfig struct {
+	InfoText        string // HTML, plain Text should already be HTML here
+	ShowEventGroups bool
+}
+
+// Iframe Tab
+type TabIFrameConfig struct {
+	Url             string // HTML, plain Text should already be HTML here
+	ShowEventGroups bool
+}
+
+// Tab Contact
+type TabContactConfig struct {
+	ComplaintsDeactivated bool
+	ComplaintsEmail       string
+}
+
 // Registration Tab
 type TabRegistrationConfig struct {
 	InfoText          string // HTML, plain Text should already be HTML here

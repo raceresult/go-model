@@ -13,6 +13,7 @@ type SiteConfig struct {
 	CoverPictureMobile string // URL of the cover picture optimized for mobile devices
 	HideEventLogo      bool   // Whether to hide the event logo on the site
 	AdditionalCode     string // Additional HTML or JavaScript code to be included in the site
+	BrandColorDark     string
 	PortalTestKey      string
 	Organizer          Company      // Information about the event organizer
 	Timer              Company      // Information about the timekeeper of the event
@@ -35,8 +36,22 @@ type TabConfig struct {
 	ShowInMenu  bool
 	ActiveFrom  datetime.DateTime
 	ActiveUntil datetime.DateTime
-	Type        string // "text", "iframe", "registration", "lists", "reviews", "contact", "details"
+	Type        string // "text", "externalcontent", "registration", "lists", "reviews", "contact", "details"
 	Config      json.RawMessage
+}
+
+func (q *TabConfig) IsVisible() bool {
+	return q.Enabled && q.ShowInMenu
+}
+
+func (q *TabConfig) IsDisabled(t datetime.DateTime) bool {
+	if !q.ActiveFrom.IsZero() && t.Before(q.ActiveFrom) {
+		return true
+	}
+	if !q.ActiveUntil.IsZero() && t.After(q.ActiveUntil) {
+		return true
+	}
+	return false
 }
 
 // Text Tab
@@ -45,10 +60,12 @@ type TabTextConfig struct {
 	ShowEventGroups bool
 }
 
-// Iframe Tab
-type TabIFrameConfig struct {
-	Url             string // HTML, plain Text should already be HTML here
+// ExternalContent Tab
+type TabExternalContentConfig struct {
+	Data            string // HTML, plain Text should already be HTML here
 	ShowEventGroups bool
+	SubType         string
+	Config          json.RawMessage
 }
 
 // Tab Contact

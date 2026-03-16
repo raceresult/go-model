@@ -51,14 +51,16 @@ type RegistrationConfig struct {
 	Login         RegistrationLogin
 }
 
+type RegLoginField struct {
+	Name  string
+	Label string
+}
+
 type RegistrationLogin struct {
 	Enabled        bool
 	InfoText       string
 	LoginNameField string
-	Fields         []struct {
-		Name  string
-		Label string
-	}
+	Fields         []RegLoginField
 }
 
 type RegistrationLoginResponse struct {

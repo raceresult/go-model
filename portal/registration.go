@@ -1,9 +1,10 @@
 package portal
 
 import (
+	"time"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/decimal"
-	"time"
 )
 
 type RegistrationContestEntryFee struct {
@@ -47,14 +48,16 @@ type Registration struct {
 
 type RegistrationConfig struct {
 	Registrations []Registration
-	Login         struct {
-		Enabled        bool
-		InfoText       string
-		LoginNameField string
-		Fields         []struct {
-			Name  string
-			Label string
-		}
+	Login         RegistrationLogin
+}
+
+type RegistrationLogin struct {
+	Enabled        bool
+	InfoText       string
+	LoginNameField string
+	Fields         []struct {
+		Name  string
+		Label string
 	}
 }
 

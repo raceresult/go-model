@@ -61,15 +61,7 @@ type TabContactConfig struct {
 type TabRegistrationConfig struct {
 	InfoText          string // HTML, plain Text should already be HTML here
 	RegTestModeUntil  datetime.DateTime
-	RegistrationLogin struct {
-		Enabled        bool
-		InfoText       string
-		LoginNameField string
-		Fields         []struct {
-			Name  string
-			Label string
-		}
-	}
+	RegistrationLogin RegistrationLogin
 	RegistrationForms []RegConfig
 }
 
@@ -97,11 +89,11 @@ type ConfigList struct {
 	Contest  interface{}
 	ShowAs   string
 	Format   string
-	Live     interface{}
-	Sortable interface{}
-	Leader   interface{}
-	Details  string
-	ID       string
+	Live     interface{} `json:",omitempty"`
+	Sortable interface{} `json:",omitempty"`
+	Leader   interface{} `json:",omitempty"`
+	Details  string      `json:",omitempty"`
+	ID       string      `json:",omitempty"`
 }
 
 // Details Tab

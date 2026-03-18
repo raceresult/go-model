@@ -37,6 +37,7 @@ type Certificate struct {
 	Reverse            bool
 	RoundedCorners     bool
 	PlotterMarks       bool
+	ChipType           int
 	Machine            int
 	BlockSize          int
 	Version            int

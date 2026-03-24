@@ -2,6 +2,7 @@ package presenter
 
 import (
 	"github.com/raceresult/go-model/datetime"
+	"github.com/raceresult/go-model/variant"
 )
 
 // Presenter represents all settings of a Presenter screen
@@ -49,6 +50,8 @@ type Window struct {
 	IgnoreManualPassings bool
 	Styles               []Style
 	Rotation             int
+
+	Details variant.VariantMap
 }
 
 // Style represents a custom style attribute/value pair

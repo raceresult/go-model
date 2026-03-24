@@ -95,6 +95,7 @@ type RegConfig struct {
 type TabListsConfig struct {
 	InfoText             string // HTML, plain Text should already be HTML here
 	Subtype              string // boxes or dropdown
+	StandardDetails      string
 	Lists                []ConfigList
 	LeaderboardHideCount bool
 	ShowCommentIcon      bool

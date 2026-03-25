@@ -13,12 +13,19 @@ type SiteConfig struct {
 	CoverPictureMobile string // URL of the cover picture optimized for mobile devices
 	HideEventLogo      bool   // Whether to hide the event logo on the site
 	AdditionalCode     string // Additional HTML or JavaScript code to be included in the site
+	AdditionalFeatures []AdditionalFeature
 	BrandColorDark     string
 	PortalTestKey      string
 	Organizer          Company      // Information about the event organizer
 	Timer              Company      // Information about the timekeeper of the event
 	PayProc            Company      // Information about the payment processor for the event
 	Tabs               []*TabConfig // List of tabs to be displayed on the event site, including their properties, as represented in the settings
+}
+
+type AdditionalFeature struct {
+	Type   string
+	ID     string
+	Active bool
 }
 
 type Company struct {

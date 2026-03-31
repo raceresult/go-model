@@ -1,4 +1,4 @@
-package portal
+package website
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"github.com/raceresult/go-model/datetime"
 )
 
-type SiteConfig struct {
+type Website struct {
 	Label              string
 	Publish            bool
 	CoverPicture       string // URL of the cover picture for the event site
@@ -16,10 +16,10 @@ type SiteConfig struct {
 	AdditionalFeatures []AdditionalFeature
 	BrandColorDark     string
 	PortalTestKey      string
-	Organizer          Company      // Information about the event organizer
-	Timer              Company      // Information about the timekeeper of the event
-	PayProc            Company      // Information about the payment processor for the event
-	Tabs               []*TabConfig // List of tabs to be displayed on the event site, including their properties, as represented in the settings
+	Organizer          Company // Information about the event organizer
+	Timer              Company // Information about the timekeeper of the event
+	PayProc            Company // Information about the payment processor for the event
+	Tabs               []*Tab  // List of tabs to be displayed on the event site, including their properties, as represented in the settings
 }
 
 type AdditionalFeature struct {
@@ -36,7 +36,7 @@ type Company struct {
 	DataProtection string
 }
 
-type TabConfig struct {
+type Tab struct {
 	Label       string
 	URLName     string
 	Enabled     bool
@@ -47,11 +47,11 @@ type TabConfig struct {
 	Config      json.RawMessage
 }
 
-func (q *TabConfig) IsVisible() bool {
+func (q *Tab) IsVisible() bool {
 	return q.Enabled && q.ShowInMenu
 }
 
-func (q *TabConfig) IsDisabled(t datetime.DateTime) bool {
+func (q *Tab) IsDisabled(t datetime.DateTime) bool {
 	if !q.ActiveFrom.IsZero() && t.Before(q.ActiveFrom) {
 		return true
 	}

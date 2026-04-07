@@ -37,28 +37,15 @@ type Company struct {
 }
 
 type Tab struct {
-	Label       string
-	URLName     string
-	Enabled     bool
-	ShowInMenu  bool
-	ActiveFrom  datetime.DateTime
-	ActiveUntil datetime.DateTime
-	Type        string // "text", "externalcontent", "registration", "lists", "reviews", "contact", "details"
-	Config      json.RawMessage
-}
-
-func (q *Tab) IsVisible() bool {
-	return q.Enabled && q.ShowInMenu
-}
-
-func (q *Tab) IsDisabled(t datetime.DateTime) bool {
-	if !q.ActiveFrom.IsZero() && t.Before(q.ActiveFrom) {
-		return true
-	}
-	if !q.ActiveUntil.IsZero() && t.After(q.ActiveUntil) {
-		return true
-	}
-	return false
+	Label        string
+	URLName      string
+	Enabled      bool
+	ShowInMenu   bool
+	HideInactive bool
+	ActiveFrom   datetime.DateTime
+	ActiveUntil  datetime.DateTime
+	Type         string // "text", "externalcontent", "registration", "lists", "reviews", "contact", "details"
+	Config       json.RawMessage
 }
 
 // Text Tab

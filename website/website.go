@@ -48,6 +48,16 @@ type Tab struct {
 	Config       json.RawMessage
 }
 
+func (q *Tab) IsWithinActiveTimeFrame(t datetime.DateTime) bool {
+	if !q.ActiveFrom.IsZero() && t.Before(q.ActiveFrom) {
+		return false
+	}
+	if !q.ActiveUntil.IsZero() && t.After(q.ActiveUntil) {
+		return false
+	}
+	return true
+}
+
 // Text Tab
 type TabTextConfig struct {
 	InfoText        string // HTML, plain Text should already be HTML here

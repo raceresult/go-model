@@ -37,15 +37,14 @@ type Company struct {
 }
 
 type Tab struct {
-	Label        string
-	URLName      string
-	Enabled      bool
-	ShowInMenu   bool
-	HideInactive bool
-	ActiveFrom   datetime.DateTime
-	ActiveUntil  datetime.DateTime
-	Type         string // "text", "externalcontent", "registration", "lists", "reviews", "contact", "details"
-	Config       json.RawMessage
+	Label       string
+	URLName     string
+	Enabled     bool
+	ShowInMenu  string
+	ActiveFrom  datetime.DateTime
+	ActiveUntil datetime.DateTime
+	Type        string // "text", "externalcontent", "registration", "lists", "reviews", "contact", "details"
+	Config      json.RawMessage
 }
 
 func (q *Tab) IsWithinActiveTimeFrame(t datetime.DateTime) bool {
@@ -56,6 +55,19 @@ func (q *Tab) IsWithinActiveTimeFrame(t datetime.DateTime) bool {
 		return false
 	}
 	return true
+}
+
+func (q *Tab) IsVisibleInMenu(t datetime.DateTime) bool {
+	switch q.ShowInMenu {
+	case "always":
+		return true
+	case "never":
+		return false
+	case "whenactive":
+		return q.IsWithinActiveTimeFrame(t)
+	default:
+		return false
+	}
 }
 
 // Text Tab
@@ -148,4 +160,37 @@ type ConfigLink struct {
 	Filter   string
 	Picture  string
 	Label    string
+}
+
+// Custom UnmarshalJSON
+func (q *Tab) UnmarshalJSON(data []byte) error {
+	type Alias Tab
+	aux := struct {
+		*Alias
+		ShowInMenu interface{}
+	}{
+		Alias: (*Alias)(q),
+	}
+
+	if err := json.Unmarshal(data, &aux); err != nil {
+		return err
+	}
+	// Handle ShowInMenu field conversion
+	switch v := aux.ShowInMenu.(type) {
+	case bool:
+		if v {
+			q.ShowInMenu = "always"
+		} else {
+			q.ShowInMenu = "never"
+		}
+	case string:
+		if v == "always" || v == "never" || v == "whenactive" {
+			q.ShowInMenu = v
+		} else {
+			q.ShowInMenu = "always"
+		}
+	default:
+		q.ShowInMenu = "always"
+	}
+	return nil
 }

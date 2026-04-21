@@ -116,6 +116,7 @@ type CustomField struct {
 type Participant struct {
 	ID                int
 	Bib               int
+	ForeignKey        string
 	Transponder1      string
 	Transponder2      string
 	RegNo             string

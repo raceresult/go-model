@@ -147,6 +147,12 @@ type TabDetailsConfig struct {
 	List                  string
 }
 
+// Participantsview Tab
+type TabParticipantviewConfig struct {
+	LiveUpdate bool
+	Elements   []*Element
+}
+
 type PublishedCertificateSet struct {
 	Mode    string
 	Name    string

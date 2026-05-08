@@ -27,9 +27,11 @@ type Style struct {
 type ElementBoxConfig struct {
 	Label       string
 	LabelPreset string
+	TitleStyles []Style
 }
 type ElementTextConfig struct {
-	Text string
+	Text      string
+	Alignment string // left, center, right
 }
 
 type ElementHTMLConfig struct {
@@ -37,13 +39,16 @@ type ElementHTMLConfig struct {
 }
 
 type ElementPictureConfig struct {
-	Src string
+	Src       string
+	Alignment string // left, center, right
 }
 
 type ElementFieldConfig struct {
 	Field       string
 	DisplayMode string // fieldonly -> "", badge, titleabove
 	Title       string
+	TitleStyles []Style // for titleabove
+	Alignment   string  // left, center, right
 }
 
 type ElementSplitsConfig struct {
@@ -78,4 +83,9 @@ type ElementPhotosConfig struct {
 
 type ElementListConfig struct {
 	List string
+}
+
+type FavoriteConfig struct {
+	Mode      string // "" standard with text, "notext": without text
+	Alignment string // left, center, right
 }

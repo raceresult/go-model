@@ -27,7 +27,7 @@ type Style struct {
 type ElementBoxConfig struct {
 	Label       string
 	LabelPreset string
-	LabelStyles []Style
+	TitleStyles []Style
 }
 type ElementTextConfig struct {
 	Text      string

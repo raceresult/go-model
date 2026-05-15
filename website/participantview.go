@@ -52,6 +52,7 @@ type ElementFieldConfig struct {
 }
 
 type ElementSplitsConfig struct {
+	EmbedInBox       bool
 	ShowTOD          bool
 	ShowGunTime      bool
 	ShowChipTime     bool
@@ -63,6 +64,7 @@ type ElementSplitsConfig struct {
 	ShowMaxRank      bool
 }
 type ElementLegsConfig struct {
+	EmbedInBox       bool
 	ShowOverallRank  bool
 	ShowGenderRank   bool
 	ShowAgeGroupRank bool
@@ -70,22 +72,30 @@ type ElementLegsConfig struct {
 	ShowPace         bool
 }
 type ElementLinksConfig struct {
-	Links []ConfigLink
+	EmbedInBox bool
+	Links      []ConfigLink
 }
 type ElementCertificatesConfig struct {
+	EmbedInBox      bool
 	CertificateSets []PublishedCertificateSet
 }
 type ElementPhotosConfig struct {
+	EmbedInBox            bool
 	PortalPhotographer    string
 	PhotographerEventID   string
 	PortalPhotographerBib string
 }
 
 type ElementListConfig struct {
-	List string
+	EmbedInBox bool
+	List       string
 }
 
-type FavoriteConfig struct {
+type ElementCommentsConfig struct {
+	EmbedInBox bool
+}
+
+type ElementFavoriteConfig struct {
 	Mode      string // "" standard with text, "notext": without text
 	Alignment int
 }

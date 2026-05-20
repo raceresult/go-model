@@ -168,3 +168,18 @@ type ConfigLink struct {
 	Picture  string
 	Label    string
 }
+
+// Favorites Tab
+type TabFavoritesConfig struct {
+	Participantview      string
+	Search               SearchConfig
+	SearchResultElements []*Element
+	FavoriteElements     []*Element
+}
+
+type SearchConfig struct {
+	Filter      string
+	Fields      []string
+	SortedField string
+	SortAsc     bool
+}

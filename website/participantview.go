@@ -99,3 +99,7 @@ type ElementFavoriteConfig struct {
 	Mode      string // "" standard with text, "notext": without text
 	Alignment int
 }
+
+type ElementInlineblockConfig struct {
+	Alignment int
+}

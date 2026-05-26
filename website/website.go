@@ -175,6 +175,9 @@ type TabFavoritesConfig struct {
 	Search               SearchConfig
 	SearchResultElements []*Element
 	FavoriteElements     []*Element
+	ListSortedField      string
+	ListSortAsc          bool
+	ParticipantColorRule string
 }
 
 type SearchConfig struct {

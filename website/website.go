@@ -177,7 +177,6 @@ type TabFavoritesConfig struct {
 	FavoriteElements     []*Element
 	ListSortedField      string
 	ListSortAsc          bool
-	ParticipantColorRule string
 }
 
 type SearchConfig struct {

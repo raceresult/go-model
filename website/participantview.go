@@ -7,16 +7,16 @@ import (
 )
 
 type Element struct {
-	ID          string
-	Type        string // text, html, picture, columns, field, box, tabs, splits, legs, links, list, photos, certificates, comments
-	Active      string // no, onlypopup,onlystandalone, yes
-	EnabledFrom datetime.DateTime
-	EnabledTo   datetime.DateTime
-	ShowIf      string
-	Styles      []Style
-	ClassName   string
-	Children    []*Element
-	Config      json.RawMessage
+	ID            string
+	Type          string // text, html, picture, columns, field, box, tabs, splits, legs, links, list, photos, certificates, comments
+	Active        string // no, onlypopup,onlystandalone, yes
+	EnabledFrom   datetime.DateTime
+	EnabledTo     datetime.DateTime
+	ShowIf        string
+	Styles        []Style
+	DynamicFormat string
+	Children      []*Element
+	Config        json.RawMessage
 }
 
 type Style struct {
@@ -25,9 +25,10 @@ type Style struct {
 }
 
 type ElementBoxConfig struct {
-	Label       string
-	LabelPreset string
-	TitleStyles []Style
+	Label         string
+	LabelPreset   string
+	TitleStyles   []Style
+	DynamicFormat string
 }
 type ElementTextConfig struct {
 	Text      string
@@ -44,11 +45,12 @@ type ElementPictureConfig struct {
 }
 
 type ElementFieldConfig struct {
-	Field       string
-	DisplayMode string // fieldonly -> "", badge, titleabove
-	Title       string
-	TitleStyles []Style // for titleabove
-	Alignment   int
+	Field         string
+	DisplayMode   string // fieldonly -> "", badge, titleabove
+	Title         string
+	TitleStyles   []Style // for titleabove
+	DynamicFormat string
+	Alignment     int
 }
 
 type ElementSplitsConfig struct {

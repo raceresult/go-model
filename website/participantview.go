@@ -25,10 +25,10 @@ type Style struct {
 }
 
 type ElementBoxConfig struct {
-	Label         string
-	LabelPreset   string
-	TitleStyles   []Style
-	DynamicFormat string
+	Label              string
+	LabelPreset        string
+	TitleStyles        []Style
+	TitleDynamicFormat string
 }
 type ElementTextConfig struct {
 	Text      string
@@ -45,12 +45,12 @@ type ElementPictureConfig struct {
 }
 
 type ElementFieldConfig struct {
-	Field         string
-	DisplayMode   string // fieldonly -> "", badge, titleabove
-	Title         string
-	TitleStyles   []Style // for titleabove
-	DynamicFormat string
-	Alignment     int
+	Field              string
+	DisplayMode        string // fieldonly -> "", badge, titleabove
+	Title              string
+	TitleStyles        []Style // for titleabove
+	TitleDynamicFormat string
+	Alignment          int
 }
 
 type ElementSplitsConfig struct {

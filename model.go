@@ -275,6 +275,7 @@ type Ranking struct {
 	UseTies     bool
 	ContestSort bool
 	Filter      string
+	GroupName   string
 }
 
 // RawData describes the internal go model

@@ -15,6 +15,7 @@ type Website struct {
 	AdditionalCode     string // Additional HTML or JavaScript code to be included in the site
 	AdditionalFeatures []AdditionalFeature
 	BrandColorDark     string
+	ApplyContestColor  string // "yes" -> yes, else no
 	PortalTestKey      string
 	Organizer          Company // Information about the event organizer
 	Timer              Company // Information about the timekeeper of the event

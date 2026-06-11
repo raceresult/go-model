@@ -275,7 +275,6 @@ type Ranking struct {
 	UseTies     bool
 	ContestSort bool
 	Filter      string
-	GroupName   string
 }
 
 // RawData describes the internal go model
@@ -659,6 +658,7 @@ type EntryFeeItem struct {
 	Field          string
 	Tax            decimal.Decimal
 	Multiplication decimal.Decimal
+	ContestID      int
 }
 
 type ImportResult struct {

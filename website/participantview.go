@@ -105,3 +105,8 @@ type ElementFavoriteConfig struct {
 type ElementInlineblockConfig struct {
 	Alignment int
 }
+
+type ElementMapConfig struct {
+	ShowFavorites bool   `json:"MapShowFavorites"`
+	MarkerLabels  string `json:"MapMarkerLabels"`
+}

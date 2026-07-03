@@ -139,6 +139,7 @@ type Method struct {
 	Currency               string
 	TransactionFee         decimal.Decimal
 	Disagio                decimal.Decimal
+	DisagioCap             decimal.Decimal
 	RegFee                 decimal.Decimal
 	RefundFee              decimal.Decimal
 	TransactionCosts       decimal.Decimal

@@ -79,10 +79,6 @@ type Registration struct {
 	Sex       string
 	Contest   int
 	Mail      string
-	Street    string
-	ZIP       string
-	City      string
-	Country   int
 	Lang      string
 	PaymentID int
 	PID       int

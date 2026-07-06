@@ -110,4 +110,5 @@ type ElementMapConfig struct {
 	ShowFavorites  bool   `json:"MapShowFavorites"`
 	MarkerLabels   string `json:"MapMarkerLabels"`
 	MarkerTooltips string `json:"MapMarkerTooltips"`
+	MarkerFilter   string `json:"MapMarkerFilter"`
 }

@@ -64,6 +64,7 @@ type ElementSplitsConfig struct {
 	ShowGenderRank   bool
 	ShowAgeGroupRank bool
 	ShowMaxRank      bool
+	HidePrediction   bool
 }
 type ElementLegsConfig struct {
 	EmbedInBox       bool
@@ -72,6 +73,7 @@ type ElementLegsConfig struct {
 	ShowAgeGroupRank bool
 	ShowMaxRank      bool
 	ShowPace         bool
+	HidePrediction   bool
 }
 type ElementLinksConfig struct {
 	EmbedInBox bool

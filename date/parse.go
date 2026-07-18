@@ -140,10 +140,10 @@ func ParseISO(value string) (Date, error) {
 		fm2 = 6
 		fd1 = 6
 		fd2 = 8
-	} else if abs[fm2] != '-' {
+	} else if fm2 >= len(abs) || abs[fm2] != '-' {
 		return Date{}, fmt.Errorf("date.ParseISO: cannot parse %q: incorrect syntax", value)
 	}
-	//fmt.Printf("%s %d %d %d %d %d\n", value, dash1, fm1, fm2, fd1, fd2)
+	// fmt.Printf("%s %d %d %d %d %d\n", value, dash1, fm1, fm2, fd1, fd2)
 
 	if len(abs) != fd2 {
 		return Date{}, fmt.Errorf("date.ParseISO: cannot parse %q: incorrect length", value)

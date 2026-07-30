@@ -36,6 +36,7 @@ type BibRange struct {
 	FinishTimeLimit decimal.Decimal
 	Comment         string
 	Filter          string
+	Disabled        bool
 }
 
 // Contest describes the internal go model

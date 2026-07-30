@@ -113,4 +113,5 @@ type ElementMapConfig struct {
 	MarkerLabels   string `json:"MapMarkerLabels"`
 	MarkerTooltips string `json:"MapMarkerTooltips"`
 	MarkerFilter   string `json:"MapMarkerFilter"`
+	EmbedInBox     bool   `json:"EmbedInBox"`
 }

@@ -1,11 +1,12 @@
 package pay
 
 import (
+	"time"
+
 	model "github.com/raceresult/go-model"
 	"github.com/raceresult/go-model/decimal"
 	"github.com/raceresult/go-model/invoice"
 	"github.com/raceresult/go-model/variant"
-	"time"
 )
 
 const (
@@ -41,6 +42,8 @@ const (
 	PmPayTabs          int = 36
 	PmAsiaPay          int = 37
 	PmMercadoPago      int = 38
+	PmXendit           int = 41
+	PmTazaPay          int = 42
 	PmCB               int = 99
 )
 

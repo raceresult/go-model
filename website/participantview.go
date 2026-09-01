@@ -116,3 +116,22 @@ type ElementMapConfig struct {
 	MarkerWait     bool   `json:"MapMarkerWait"`
 	EmbedInBox     bool   `json:"EmbedInBox"`
 }
+
+type MapData map[int]MapContest
+
+type MapContest struct {
+	Color        string `json:",omitempty"`
+	Splits       []MapSplit
+	Participants MapParticipant
+}
+
+type MapSplit struct {
+	Distance int    // always in meters
+	Position string `json:",omitempty"`
+	Internal bool   `json:",omitempty"`
+}
+
+type MapParticipant struct {
+	Columns []string
+	Data    map[int][]any
+}

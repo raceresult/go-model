@@ -133,5 +133,5 @@ type MapSplit struct {
 
 type MapParticipant struct {
 	Columns []string
-	Data    map[int][]any
+	Data    map[int][]interface{}
 }

@@ -120,16 +120,17 @@ type TabListsConfig struct {
 }
 
 type ConfigList struct {
-	Name     string
-	Mode     string
-	Contest  interface{}
-	ShowAs   string
-	Format   string
-	Live     interface{} `json:",omitempty"`
-	Sortable interface{} `json:",omitempty"`
-	Leader   interface{} `json:",omitempty"`
-	Details  string      `json:",omitempty"`
-	ID       string      `json:",omitempty"`
+	Name               string
+	Mode               string
+	Contest            interface{}
+	ShowAs             string
+	Format             string
+	Live               interface{} `json:",omitempty"`
+	Sortable           interface{} `json:",omitempty"`
+	Leader             interface{} `json:",omitempty"`
+	Details            string      `json:",omitempty"`
+	ID                 string      `json:",omitempty"`
+	HideProfilePicture bool        `json:",omitempty"`
 }
 
 // Details Tab

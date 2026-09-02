@@ -116,7 +116,6 @@ type TabListsConfig struct {
 	StandardDetails      string
 	Lists                []ConfigList
 	LeaderboardHideCount bool
-	ShowCommentIcon      bool
 }
 
 type ConfigList struct {

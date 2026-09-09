@@ -114,7 +114,7 @@ type ElementMapConfig struct {
 	MarkerTooltips string `json:"MapMarkerTooltips"`
 	MarkerFilter   string `json:"MapMarkerFilter"`
 	MarkerWait     bool   `json:"MapMarkerWait"`
-	MarkerShowIcon bool   `json:"MapMarkerShowIcon"`
+	MarkerHideIcon bool   `json:"MapMarkerHideIcon"`
 	EmbedInBox     bool   `json:"EmbedInBox"`
 }
 

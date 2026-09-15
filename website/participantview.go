@@ -131,6 +131,8 @@ type MapContestSplit struct {
 	Distance int    // always in meters
 	Position string `json:",omitempty"`
 	Internal bool   `json:",omitempty"`
+	ID       int    `json:"-"`
+	OrderPos int    `json:"-"`
 }
 
 type MapParticipants struct {

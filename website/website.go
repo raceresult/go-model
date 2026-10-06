@@ -17,6 +17,7 @@ type Website struct {
 	BrandColorDark     string
 	ApplyContestColor  string // "yes" -> yes, else no
 	PortalTestKey      string
+	CommentsMinimumAge int     // 0-21 // Minimum age required to enable comments on the participant view
 	Organizer          Company // Information about the event organizer
 	Timer              Company // Information about the timekeeper of the event
 	PayProc            Company // Information about the payment processor for the event

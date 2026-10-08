@@ -8,7 +8,7 @@ import (
 
 type Element struct {
 	ID            string
-	Type          string // text, html, picture, columns, field, box, tabs, splits, legs, links, list, photos, certificates, comments
+	Type          string // text, html, picture, columns, field, box, tabs, splits, legs, links, list, photos, certificates, chart
 	Active        string // no, onlypopup,onlystandalone, yes
 	EnabledFrom   datetime.DateTime
 	EnabledTo     datetime.DateTime
@@ -95,17 +95,13 @@ type ElementListConfig struct {
 	List       string
 }
 
-type ElementCommentsConfig struct {
-	EmbedInBox bool
-}
-
-type ElementFavoriteConfig struct {
-	Mode      string // "" standard with text, "notext": without text
-	Alignment int
-}
-
 type ElementInlineblockConfig struct {
 	Alignment int
+}
+
+type ElementChartConfig struct {
+	EmbedInBox bool
+	ChartType  string // "splitpace", "splitrank"
 }
 
 type ElementMapConfig struct {

@@ -75,16 +75,22 @@ func (q *Tab) IsVisibleInMenu(t datetime.DateTime) bool {
 
 // Text Tab
 type TabTextConfig struct {
-	InfoText        string // HTML, plain Text should already be HTML here
-	ShowEventGroups bool
+	InfoText                string // HTML, plain Text should already be HTML here
+	ShowEventGroups         bool
+	ShowEventNews           bool
+	ShowExternalWebsiteLink bool
+	ExternalWebsiteLink     string
 }
 
 // ExternalContent Tab
 type TabExternalContentConfig struct {
-	Data            string // HTML, plain Text should already be HTML here
-	ShowEventGroups bool
-	SubType         string
-	Config          json.RawMessage
+	Data                    string // HTML, plain Text should already be HTML here
+	ShowEventGroups         bool
+	ShowEventNews           bool
+	ShowExternalWebsiteLink bool
+	ExternalWebsiteLink     string
+	SubType                 string
+	Config                  json.RawMessage
 }
 
 // Tab Contact

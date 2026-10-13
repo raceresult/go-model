@@ -1,6 +1,8 @@
 package variant
 
 import (
+	"io"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/datetime"
 	"github.com/raceresult/go-model/decimal"
@@ -81,6 +83,8 @@ type Variant interface {
 	isNumeric() bool
 
 	toJSON(hashDates bool) []byte
+
+	writeAsJSON(w io.Writer, hashDates bool)
 }
 
 // ToVariant converts interface{} to Variant. Use with extreme care.
@@ -159,6 +163,15 @@ func ToJSON(v Variant, hashDates bool) []byte {
 		return []byte("\"\"")
 	}
 	return v.toJSON(hashDates)
+}
+
+// ToJSON converts the value to a JSON string
+func writeAsJSON(v Variant, w io.Writer, hashDates bool) {
+	if v == nil {
+		_, _ = w.Write([]byte("\"\""))
+	} else {
+		v.writeAsJSON(w, hashDates)
+	}
 }
 
 // Val parses the value to a number

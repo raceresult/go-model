@@ -1,6 +1,8 @@
 package variant
 
 import (
+	"io"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/datetime"
 	"github.com/raceresult/go-model/decimal"
@@ -210,4 +212,8 @@ func (s rDecimal) isNumeric() bool {
 
 func (s rDecimal) toJSON(_ bool) []byte {
 	return []byte(s.toString())
+}
+
+func (s rDecimal) writeAsJSON(w io.Writer, hashDates bool) {
+	_, _ = w.Write(s.toJSON(hashDates))
 }

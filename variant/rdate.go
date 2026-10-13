@@ -1,12 +1,13 @@
 package variant
 
 import (
+	"io"
+	"time"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/datetime"
 	"github.com/raceresult/go-model/decimal"
 	"golang.org/x/text/collate"
-
-	"time"
 )
 
 // RDate creates a date variant type.
@@ -195,4 +196,8 @@ func (s rDate) toJSON(hashDates bool) []byte {
 		return []byte("\"#" + s.toDate().String() + "#\"")
 	}
 	return []byte("\"" + s.toDate().String() + "\"")
+}
+
+func (s rDate) writeAsJSON(w io.Writer, hashDates bool) {
+	_, _ = w.Write(s.toJSON(hashDates))
 }

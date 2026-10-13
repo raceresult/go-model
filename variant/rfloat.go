@@ -1,14 +1,16 @@
 package variant
 
 import (
-	"github.com/raceresult/go-model/date"
-	"github.com/raceresult/go-model/datetime"
-	"github.com/raceresult/go-model/decimal"
-	"golang.org/x/text/collate"
+	"io"
 	"math"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/raceresult/go-model/date"
+	"github.com/raceresult/go-model/datetime"
+	"github.com/raceresult/go-model/decimal"
+	"golang.org/x/text/collate"
 )
 
 // RFloat creates a floating point variant type.
@@ -200,4 +202,8 @@ func (s rFloat) isNumeric() bool {
 
 func (s rFloat) toJSON(_ bool) []byte {
 	return []byte(s.toString())
+}
+
+func (s rFloat) writeAsJSON(w io.Writer, hashDates bool) {
+	_, _ = w.Write(s.toJSON(hashDates))
 }

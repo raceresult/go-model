@@ -87,7 +87,7 @@ func RListArrayToJSON(result []RList, hashDates bool) []byte {
 			if j > 0 {
 				sb.WriteByte(',')
 			}
-			sb.Write(ToJSON(result[j].Item(i), hashDates))
+			writeAsJSON(result[j].Item(i), &sb, hashDates)
 		}
 		sb.WriteByte(']')
 	}

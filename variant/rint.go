@@ -1,12 +1,14 @@
 package variant
 
 import (
+	"io"
+	"math"
+	"strconv"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/datetime"
 	"github.com/raceresult/go-model/decimal"
 	"golang.org/x/text/collate"
-	"math"
-	"strconv"
 )
 
 // RInt creates an integer variant type.
@@ -227,4 +229,8 @@ func (s rInt) isNumeric() bool {
 
 func (s rInt) toJSON(_ bool) []byte {
 	return []byte(s.toString())
+}
+
+func (s rInt) writeAsJSON(w io.Writer, hashDates bool) {
+	_, _ = w.Write(s.toJSON(hashDates))
 }

@@ -2,12 +2,15 @@ package variant
 
 import (
 	"encoding/json"
+	"io"
+	"strconv"
+	"strings"
+
 	"github.com/raceresult/go-model/date"
 	"github.com/raceresult/go-model/datetime"
 	"github.com/raceresult/go-model/decimal"
+	"github.com/raceresult/go-model/variant/jsonstring"
 	"golang.org/x/text/collate"
-	"strconv"
-	"strings"
 )
 
 // RString creates a string variant type.
@@ -228,4 +231,8 @@ func (s rString) isNumeric() bool {
 func (s rString) toJSON(_ bool) []byte {
 	bb, _ := json.Marshal(string(s))
 	return bb
+}
+
+func (s rString) writeAsJSON(w io.Writer, _ bool) {
+	jsonstring.WriteJSONString(string(s), w)
 }

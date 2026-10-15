@@ -22,6 +22,23 @@ type Website struct {
 	Timer              Company // Information about the timekeeper of the event
 	PayProc            Company // Information about the payment processor for the event
 	Tabs               []*Tab  // List of tabs to be displayed on the event site, including their properties, as represented in the settings
+	HomeTab            HomeTab // Information about the home tab of the event site, including its properties
+}
+
+type HomeTab struct {
+	// Info Tab
+	InfoText string // HTML, plain Text should already be HTML here
+
+	// Sidebar
+	ShowEventGroups     bool
+	ExternalWebsiteLink string
+
+	// Forum Tab
+	ForumDeactivated bool
+
+	// Contact Tab
+	ComplaintsDeactivated bool
+	ComplaintsEmail       string
 }
 
 type AdditionalFeature struct {

@@ -17,12 +17,12 @@ type Website struct {
 	BrandColorDark     string
 	ApplyContestColor  string // "yes" -> yes, else no
 	PortalTestKey      string
-	CommentsMinimumAge int     // 0-21 // Minimum age required to enable comments on the participant view
-	Organizer          Company // Information about the event organizer
-	Timer              Company // Information about the timekeeper of the event
-	PayProc            Company // Information about the payment processor for the event
-	Tabs               []*Tab  // List of tabs to be displayed on the event site, including their properties, as represented in the settings
-	HomeTab            HomeTab // Information about the home tab of the event site, including its properties
+	CommentsMinimumAge int      // 0-21 // Minimum age required to enable comments on the participant view
+	Organizer          Company  // Information about the event organizer
+	Timer              Company  // Information about the timekeeper of the event
+	PayProc            Company  // Information about the payment processor for the event
+	Tabs               []*Tab   // List of tabs to be displayed on the event site, including their properties, as represented in the settings
+	HomeTab            *HomeTab // Information about the home tab of the event site, including its properties
 }
 
 type HomeTab struct {

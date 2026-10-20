@@ -654,7 +654,7 @@ type TriggerSettings struct {
 	ExporterID    int
 	SettingNames  []string
 	Filter        string
-	RawDataFilter *RawDataFilter
+	RawDataFilter RawDataFilter
 	ReturnFields  []string
 }
 

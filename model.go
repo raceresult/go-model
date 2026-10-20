@@ -645,6 +645,19 @@ const (
 	TriggerNewRawDataV2     TriggerType = 10
 )
 
+type TriggerSettings struct {
+	TriggerType   TriggerType
+	PID           []int
+	ResultID      []int
+	ContestID     []int
+	SplitName     []string
+	ExporterID    int
+	SettingNames  []string
+	Filter        string
+	RawDataFilter *RawDataFilter
+	ReturnFields  []string
+}
+
 type SaveValueArrayItem struct {
 	Bib       int
 	PID       int

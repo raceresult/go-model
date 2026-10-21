@@ -831,3 +831,8 @@ type OPDataPayment struct {
 	Comment   string `json:",omitempty"`
 	Canceled  bool   `json:",omitempty"`
 }
+
+type ParticipantAndDummyCount struct {
+	Participants int
+	Dummies      int
+}

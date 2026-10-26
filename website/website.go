@@ -28,14 +28,11 @@ type Website struct {
 type HomeTab struct {
 	// Info Tab
 	InfoText string // HTML, plain Text should already be HTML here
-
 	// Sidebar
 	ShowEventGroups     bool
 	ExternalWebsiteLink string
-
 	// Forum Tab
 	ForumDeactivated bool
-
 	// Contact Tab
 	ComplaintsDeactivated bool
 	ComplaintsEmail       string
@@ -63,7 +60,7 @@ type Tab struct {
 	ShowInMenu2 string
 	ActiveFrom  datetime.DateTime
 	ActiveUntil datetime.DateTime
-	Type        string // "text", "externalcontent", "registration", "lists", "reviews", "contact", "details"
+	Type        string // "text", "externalcontent", "registration", "lists", "favorites", "participantview"
 	Config      json.RawMessage
 }
 

@@ -102,8 +102,6 @@ type ElementInlineblockConfig struct {
 type ElementChartConfig struct {
 	EmbedInBox bool
 	ChartType  string // "splitpace", "splitrank"
-
-	TimeSource string `json:",omitempty"` // "" -> use split config, "gun", "chip"
 	RankScope  string `json:",omitempty"` // "" -> overall, "gender", "agegroup"
 }
 

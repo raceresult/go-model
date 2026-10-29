@@ -8,8 +8,8 @@ import (
 
 type Element struct {
 	ID            string
-	Type          string // text, html, picture, columns, field, box, tabs, splits, legs, links, list, photos, certificates, chart
-	Active        string // no, onlypopup,onlystandalone, yes
+	Type          string
+	Active        string
 	EnabledFrom   datetime.DateTime
 	EnabledTo     datetime.DateTime
 	ShowIf        string
@@ -18,6 +18,34 @@ type Element struct {
 	Children      []*Element
 	Config        json.RawMessage
 }
+
+// Element.Type values
+const (
+	ElementTypeText         = "text"
+	ElementTypeHTML         = "html"
+	ElementTypePicture      = "picture"
+	ElementTypeColumns      = "columns"
+	ElementTypeField        = "field"
+	ElementTypeBox          = "box"
+	ElementTypeTabs         = "tabs"
+	ElementTypeSplits       = "splits"
+	ElementTypeLegs         = "legs"
+	ElementTypeLinks        = "links"
+	ElementTypeList         = "list"
+	ElementTypePhotos       = "photos"
+	ElementTypeCertificates = "certificates"
+	ElementTypeChart        = "chart"
+	ElementTypeInlineBlock  = "inlineblock"
+	ElementTypeMap          = "map"
+)
+
+// Element.Active values
+const (
+	ElementActiveNo             = "no"
+	ElementActiveOnlyPopup      = "onlypopup"
+	ElementActiveOnlyStandalone = "onlystandalone"
+	ElementActiveYes            = "yes"
+)
 
 type Style struct {
 	Attribute string
@@ -46,12 +74,19 @@ type ElementPictureConfig struct {
 
 type ElementFieldConfig struct {
 	Field              string
-	DisplayMode        string // fieldonly -> "", badge, titleabove
+	DisplayMode        string
 	Title              string
 	TitleStyles        []Style // for titleabove
 	TitleDynamicFormat string
 	Alignment          int
 }
+
+// ElementFieldConfig.DisplayMode values
+const (
+	FieldDisplayModeFieldOnly  = ""
+	FieldDisplayModeBadge      = "badge"
+	FieldDisplayModeTitleAbove = "titleabove"
+)
 
 type ElementSplitsConfig struct {
 	EmbedInBox       bool
@@ -101,9 +136,22 @@ type ElementInlineblockConfig struct {
 
 type ElementChartConfig struct {
 	EmbedInBox bool
-	ChartType  string // "splitpace", "splitrank"
-	RankScope  string `json:",omitempty"` // "" -> overall, "gender", "agegroup"
+	ChartType  string
+	RankScope  string `json:",omitempty"`
 }
+
+// ElementChartConfig.ChartType values
+const (
+	ChartTypeSplitPace = "splitpace"
+	ChartTypeSplitRank = "splitrank"
+)
+
+// ElementChartConfig.RankScope values
+const (
+	RankScopeOverall  = ""
+	RankScopeGender   = "gender"
+	RankScopeAgeGroup = "agegroup"
+)
 
 type ElementMapConfig struct {
 	ShowFavorites  bool   `json:"MapShowFavorites"`

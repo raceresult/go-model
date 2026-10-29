@@ -15,7 +15,7 @@ type Website struct {
 	AdditionalCode     string // Additional HTML or JavaScript code to be included in the site
 	AdditionalFeatures []AdditionalFeature
 	BrandColorDark     string
-	ApplyContestColor  string // "yes" -> yes, else no
+	ApplyContestColor  string
 	PortalTestKey      string
 	CommentsMinimumAge int      // 0-21 // Minimum age required to enable comments on the participant view
 	Organizer          Company  // Information about the event organizer
@@ -24,6 +24,8 @@ type Website struct {
 	Tabs               []*Tab   // List of tabs to be displayed on the event site, including their properties, as represented in the settings
 	HomeTab            *HomeTab // Information about the home tab of the event site, including its properties
 }
+
+const ApplyContestColorYes = "yes"
 
 type HomeTab struct {
 	// Info Tab
@@ -44,6 +46,13 @@ type AdditionalFeature struct {
 	Active bool
 }
 
+// AdditionalFeature.Type values
+const (
+	AdditionalFeatureTypeNone            = ""
+	AdditionalFeatureTypeGoogleAnalytics = "GoogleAnalytics"
+	AdditionalFeatureTypeMetaPixel       = "MetaPixel"
+)
+
 type Company struct {
 	Name           string
 	Mail           string
@@ -60,9 +69,26 @@ type Tab struct {
 	ShowInMenu2 string
 	ActiveFrom  datetime.DateTime
 	ActiveUntil datetime.DateTime
-	Type        string // "text", "externalcontent", "registration", "lists", "favorites", "participantview"
+	Type        string
 	Config      json.RawMessage
 }
+
+// Tab.Type values
+const (
+	TabTypeText            = "text"
+	TabTypeExternalContent = "externalcontent"
+	TabTypeRegistration    = "registration"
+	TabTypeLists           = "lists"
+	TabTypeFavorites       = "favorites"
+	TabTypeParticipantView = "participantview"
+)
+
+// Tab.ShowInMenu2 values
+const (
+	ShowInMenuAlways     = "always"
+	ShowInMenuNever      = "never"
+	ShowInMenuWhenActive = "whenactive"
+)
 
 func (q *Tab) IsWithinActiveTimeFrame(t datetime.DateTime) bool {
 	if !q.ActiveFrom.IsZero() && t.Before(q.ActiveFrom) {
@@ -76,11 +102,11 @@ func (q *Tab) IsWithinActiveTimeFrame(t datetime.DateTime) bool {
 
 func (q *Tab) IsVisibleInMenu(t datetime.DateTime) bool {
 	switch q.ShowInMenu2 {
-	case "always":
+	case ShowInMenuAlways:
 		return true
-	case "never":
+	case ShowInMenuNever:
 		return false
-	case "whenactive":
+	case ShowInMenuWhenActive:
 		return q.IsWithinActiveTimeFrame(t)
 	default:
 		return q.ShowInMenu
@@ -106,6 +132,12 @@ type TabExternalContentConfig struct {
 	SubType                 string
 	Config                  json.RawMessage
 }
+
+// TabExternalContentConfig.SubType values
+const (
+	ExtContentSubTypeIFrame  = ""
+	ExtContentSubTypeYoutube = "youtube"
+)
 
 // Tab Contact
 type TabContactConfig struct {
@@ -133,11 +165,17 @@ type RegConfig struct {
 // Lists Tab
 type TabListsConfig struct {
 	InfoText             string // HTML, plain Text should already be HTML here
-	Subtype              string // boxes or dropdown
+	Subtype              string
 	StandardDetails      string
 	Lists                []ConfigList
 	LeaderboardHideCount bool
 }
+
+// TabListsConfig.Subtype values
+const (
+	ListsSubtypeBoxes    = "boxes"
+	ListsSubtypeDropdown = "dropdown"
+)
 
 type ConfigList struct {
 	Name                string

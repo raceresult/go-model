@@ -91,6 +91,7 @@ const (
 	FieldDisplayModeFieldOnly  = ""
 	FieldDisplayModeBadge      = "badge"
 	FieldDisplayModeTitleAbove = "titleabove"
+	FieldDisplayModeTitleBelow = "titlebelow"
 )
 
 type ElementSplitsConfig struct {

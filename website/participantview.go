@@ -37,6 +37,10 @@ const (
 	ElementTypeChart        = "chart"
 	ElementTypeInlineBlock  = "inlineblock"
 	ElementTypeMap          = "map"
+
+	// legacy
+	ElementTypeFavorite = "favorite"
+	ElementTypeComments = "comments"
 )
 
 // Element.Active values

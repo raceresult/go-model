@@ -83,10 +83,16 @@ const (
 	TabTypeLists           = "lists"
 	TabTypeFavorites       = "favorites"
 	TabTypeParticipantView = "participantview"
+
+	// legacy
+	TabTypeContact = "contact"
+	TabTypeDetails = "details"
+	TabTypeReviews = "reviews"
 )
 
 // Tab.ShowInMenu2 values
 const (
+	ShowInMenuDefault    = ""
 	ShowInMenuAlways     = "always"
 	ShowInMenuNever      = "never"
 	ShowInMenuWhenActive = "whenactive"

@@ -6,6 +6,8 @@ import (
 	"github.com/raceresult/go-model/datetime"
 )
 
+const WebsiteDefault = "default"
+
 type Website struct {
 	Label              string
 	Publish            bool

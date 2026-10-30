@@ -8,8 +8,8 @@ import (
 
 type Element struct {
 	ID            string
-	Type          string
-	Active        string
+	Type          ElementType
+	Active        ElementActive
 	EnabledFrom   datetime.DateTime
 	EnabledTo     datetime.DateTime
 	ShowIf        string
@@ -19,32 +19,40 @@ type Element struct {
 	Config        json.RawMessage
 }
 
+type ElementType string
+
 // Element.Type values
 const (
-	ElementTypeText         = "text"
-	ElementTypeHTML         = "html"
-	ElementTypePicture      = "picture"
-	ElementTypeColumns      = "columns"
-	ElementTypeField        = "field"
-	ElementTypeBox          = "box"
-	ElementTypeTabs         = "tabs"
-	ElementTypeSplits       = "splits"
-	ElementTypeLegs         = "legs"
-	ElementTypeLinks        = "links"
-	ElementTypeList         = "list"
-	ElementTypePhotos       = "photos"
-	ElementTypeCertificates = "certificates"
-	ElementTypeChart        = "chart"
-	ElementTypeInlineBlock  = "inlineblock"
-	ElementTypeMap          = "map"
+	ElementTypeText         ElementType = "text"
+	ElementTypeHTML         ElementType = "html"
+	ElementTypePicture      ElementType = "picture"
+	ElementTypeColumns      ElementType = "columns"
+	ElementTypeField        ElementType = "field"
+	ElementTypeBox          ElementType = "box"
+	ElementTypeTabs         ElementType = "tabs"
+	ElementTypeSplits       ElementType = "splits"
+	ElementTypeLegs         ElementType = "legs"
+	ElementTypeLinks        ElementType = "links"
+	ElementTypeList         ElementType = "list"
+	ElementTypePhotos       ElementType = "photos"
+	ElementTypeCertificates ElementType = "certificates"
+	ElementTypeChart        ElementType = "chart"
+	ElementTypeInlineBlock  ElementType = "inlineblock"
+	ElementTypeMap          ElementType = "map"
+
+	// legacy
+	ElementTypeFavorite ElementType = "favorite"
+	ElementTypeComments ElementType = "comments"
 )
+
+type ElementActive string
 
 // Element.Active values
 const (
-	ElementActiveNo             = "no"
-	ElementActiveOnlyPopup      = "onlypopup"
-	ElementActiveOnlyStandalone = "onlystandalone"
-	ElementActiveYes            = "yes"
+	ElementActiveNo             ElementActive = "no"
+	ElementActiveOnlyPopup      ElementActive = "onlypopup"
+	ElementActiveOnlyStandalone ElementActive = "onlystandalone"
+	ElementActiveYes            ElementActive = "yes"
 )
 
 type Style struct {
@@ -74,18 +82,20 @@ type ElementPictureConfig struct {
 
 type ElementFieldConfig struct {
 	Field              string
-	DisplayMode        string
+	DisplayMode        FieldDisplayMode
 	Title              string
 	TitleStyles        []Style // for titleabove
 	TitleDynamicFormat string
 	Alignment          int
 }
 
+type FieldDisplayMode string
+
 // ElementFieldConfig.DisplayMode values
 const (
-	FieldDisplayModeFieldOnly  = ""
-	FieldDisplayModeBadge      = "badge"
-	FieldDisplayModeTitleAbove = "titleabove"
+	FieldDisplayModeFieldOnly  FieldDisplayMode = ""
+	FieldDisplayModeBadge      FieldDisplayMode = "badge"
+	FieldDisplayModeTitleAbove FieldDisplayMode = "titleabove"
 )
 
 type ElementSplitsConfig struct {
@@ -136,21 +146,25 @@ type ElementInlineblockConfig struct {
 
 type ElementChartConfig struct {
 	EmbedInBox bool
-	ChartType  string
-	RankScope  string `json:",omitempty"`
+	ChartType  ChartType
+	RankScope  RankScope `json:",omitempty"`
 }
+
+type ChartType string
 
 // ElementChartConfig.ChartType values
 const (
-	ChartTypeSplitPace = "splitpace"
-	ChartTypeSplitRank = "splitrank"
+	ChartTypeSplitPace ChartType = "splitpace"
+	ChartTypeSplitRank ChartType = "splitrank"
 )
+
+type RankScope string
 
 // ElementChartConfig.RankScope values
 const (
-	RankScopeOverall  = ""
-	RankScopeGender   = "gender"
-	RankScopeAgeGroup = "agegroup"
+	RankScopeOverall  RankScope = ""
+	RankScopeGender   RankScope = "gender"
+	RankScopeAgeGroup RankScope = "agegroup"
 )
 
 type ElementMapConfig struct {

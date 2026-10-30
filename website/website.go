@@ -43,16 +43,18 @@ type HomeTab struct {
 }
 
 type AdditionalFeature struct {
-	Type   string
+	Type   AdditionalFeatureType
 	ID     string
 	Active bool
 }
 
+type AdditionalFeatureType string
+
 // AdditionalFeature.Type values
 const (
-	AdditionalFeatureTypeNone            = ""
-	AdditionalFeatureTypeGoogleAnalytics = "GoogleAnalytics"
-	AdditionalFeatureTypeMetaPixel       = "MetaPixel"
+	AdditionalFeatureTypeNone            AdditionalFeatureType = ""
+	AdditionalFeatureTypeGoogleAnalytics AdditionalFeatureType = "GoogleAnalytics"
+	AdditionalFeatureTypeMetaPixel       AdditionalFeatureType = "MetaPixel"
 )
 
 type Company struct {
@@ -68,28 +70,38 @@ type Tab struct {
 	URLName     string
 	Enabled     bool
 	ShowInMenu  bool
-	ShowInMenu2 string
+	ShowInMenu2 ShowInMenu
 	ActiveFrom  datetime.DateTime
 	ActiveUntil datetime.DateTime
-	Type        string
+	Type        TabType
 	Config      json.RawMessage
 }
 
+type TabType string
+
 // Tab.Type values
 const (
-	TabTypeText            = "text"
-	TabTypeExternalContent = "externalcontent"
-	TabTypeRegistration    = "registration"
-	TabTypeLists           = "lists"
-	TabTypeFavorites       = "favorites"
-	TabTypeParticipantView = "participantview"
+	TabTypeText            TabType = "text"
+	TabTypeExternalContent TabType = "externalcontent"
+	TabTypeRegistration    TabType = "registration"
+	TabTypeLists           TabType = "lists"
+	TabTypeFavorites       TabType = "favorites"
+	TabTypeParticipantView TabType = "participantview"
+
+	// legacy
+	TabTypeContact TabType = "contact"
+	TabTypeDetails TabType = "details"
+	TabTypeReviews TabType = "reviews"
 )
+
+type ShowInMenu string
 
 // Tab.ShowInMenu2 values
 const (
-	ShowInMenuAlways     = "always"
-	ShowInMenuNever      = "never"
-	ShowInMenuWhenActive = "whenactive"
+	ShowInMenuDefault    ShowInMenu = "" // fall back to Tab.ShowInMenu
+	ShowInMenuAlways     ShowInMenu = "always"
+	ShowInMenuNever      ShowInMenu = "never"
+	ShowInMenuWhenActive ShowInMenu = "whenactive"
 )
 
 func (q *Tab) IsWithinActiveTimeFrame(t datetime.DateTime) bool {
@@ -167,16 +179,18 @@ type RegConfig struct {
 // Lists Tab
 type TabListsConfig struct {
 	InfoText             string // HTML, plain Text should already be HTML here
-	Subtype              string
+	Subtype              ListsSubtype
 	StandardDetails      string
 	Lists                []ConfigList
 	LeaderboardHideCount bool
 }
 
+type ListsSubtype string
+
 // TabListsConfig.Subtype values
 const (
-	ListsSubtypeBoxes    = "boxes"
-	ListsSubtypeDropdown = "dropdown"
+	ListsSubtypeBoxes    ListsSubtype = "boxes"
+	ListsSubtypeDropdown ListsSubtype = "dropdown"
 )
 
 type ConfigList struct {

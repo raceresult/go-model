@@ -25,6 +25,7 @@ const (
 	ElementTypeHTML         = "html"
 	ElementTypePicture      = "picture"
 	ElementTypeColumns      = "columns"
+	ElementTypeFlexbox      = "flexbox"
 	ElementTypeField        = "field"
 	ElementTypeBox          = "box"
 	ElementTypeTabs         = "tabs"

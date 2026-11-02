@@ -150,6 +150,7 @@ type ElementChartConfig struct {
 const (
 	ChartTypeSplitPace = "splitpace"
 	ChartTypeSplitRank = "splitrank"
+	ChartTypeElevation = "elevation"
 )
 
 // ElementChartConfig.RankScope values

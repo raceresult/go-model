@@ -84,6 +84,9 @@ const (
 	TabTypeFavorites       = "favorites"
 	TabTypeParticipantView = "participantview"
 
+	// home tab built by my.rr
+	TabTypeHome = "home"
+
 	// legacy
 	TabTypeContact = "contact"
 	TabTypeDetails = "details"

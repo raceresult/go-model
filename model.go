@@ -516,6 +516,7 @@ type TimingPoint struct {
 	Position       string
 	OrderPos       int
 	Color          string
+	MinRSSI        int
 }
 
 type UserDefinedField struct {

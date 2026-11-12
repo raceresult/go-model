@@ -170,15 +170,15 @@ type ElementMapConfig struct {
 	EmbedInBox     bool   `json:"EmbedInBox"`
 }
 
-type MapData map[int]*MapContest
+type TrackingData map[int]*TrackingContest
 
-type MapContest struct {
+type TrackingContest struct {
 	Color        string `json:",omitempty"`
-	Splits       []*MapContestSplit
-	Participants MapParticipants
+	Splits       []*TrackingContestSplit
+	Participants TrackingParticipants
 }
 
-type MapContestSplit struct {
+type TrackingContestSplit struct {
 	Name     string
 	Distance int    // always in meters
 	Position string `json:",omitempty"`
@@ -187,7 +187,7 @@ type MapContestSplit struct {
 	OrderPos int    `json:"-"`
 }
 
-type MapParticipants struct {
+type TrackingParticipants struct {
 	Columns []string
 	Data    map[int][]interface{}
 }

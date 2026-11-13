@@ -137,6 +137,9 @@ type ValidationRule struct {
 }
 
 type ErrorMessages struct {
-	BeforRegStart string
-	AfterRegEnd   string
+	BeforRegStart    string
+	AfterRegEnd      string
+	RegFull          string
+	QueueFull        string
+	ChangeNotAllowed string
 }

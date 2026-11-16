@@ -93,6 +93,7 @@ const (
 	CustomFieldTypeEmail       CustomFieldType = 8
 	CustomFieldTypeCellPhone   CustomFieldType = 9
 	CustomFieldTypeTransponder CustomFieldType = 10
+	CustomFieldTypeTime        CustomFieldType = 11
 )
 
 // CustomField describes the internal go model

@@ -58,15 +58,16 @@ type WithSum struct {
 }
 
 type SourceItem struct {
-	ID             int
-	InvoiceID      int
-	PID            int
-	EntryFeeID     int
-	EntryFeeName   string
-	Multiplication decimal.Decimal
-	Amount         decimal.Decimal
-	TaxRate        decimal.Decimal
-	Credit         bool
+	ID              int
+	InvoiceID       int
+	PID             int
+	EntryFeeID      int
+	EntryFeeName    string
+	Multiplication  decimal.Decimal
+	Amount          decimal.Decimal
+	TaxRate         decimal.Decimal
+	IsProcessingFee bool
+	Credit          bool
 }
 
 type Item struct {

@@ -9,7 +9,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/rickb777/plural"
+	"github.com/raceresult/go-model/date/plural"
 )
 
 // Format converts the period to human-readable form using the default localisation.
@@ -36,7 +36,7 @@ func (period Period) FormatWithPeriodNames(yearNames, monthNames, weekNames, day
 		if len(weekNames) > 0 {
 			weeks := period.days / 70
 			mdays := period.days % 70
-			//fmt.Printf("%v %#v - %d %d\n", period, period, weeks, mdays)
+			// fmt.Printf("%v %#v - %d %d\n", period, period, weeks, mdays)
 			if weeks > 0 {
 				parts = appendNonBlank(parts, weekNames.FormatInt(int(weeks)))
 			}

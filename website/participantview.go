@@ -141,9 +141,11 @@ type ElementInlineblockConfig struct {
 }
 
 type ElementChartConfig struct {
-	EmbedInBox bool
-	ChartType  string
-	RankScope  string `json:",omitempty"`
+	EmbedInBox      bool
+	ChartType       string
+	RankScope       string `json:",omitempty"`
+	XAxis           string `json:",omitempty"`
+	MarkTransitions bool   `json:",omitempty"`
 }
 
 // ElementChartConfig.ChartType values
@@ -158,6 +160,13 @@ const (
 	RankScopeOverall  = ""
 	RankScopeGender   = "gender"
 	RankScopeAgeGroup = "agegroup"
+)
+
+// EllementChartConfig.XAxis values
+const (
+	ChartXAxisDistance    = ""
+	ChartXAxisEquidistant = "equidistant"
+	ChartXAxisTime        = "time"
 )
 
 type ElementMapConfig struct {
